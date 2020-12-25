@@ -1,0 +1,12 @@
+name: Node Matrix Action
+description: Outputs a matrix with the current Node versions.
+inputs:
+  repo:
+    description: Docker repo to prepend to `extra_tags`.
+    required: true
+outputs:
+  matrix:
+    description: Matrix JSON to be used in another job.
+runs:
+  using: 'node12'
+  main: 'index.js'
