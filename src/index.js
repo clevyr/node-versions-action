@@ -11,7 +11,7 @@
 
         // Filter out old or unreleased versions
         data = Object.entries(data).filter(
-            ([_, {end, start}]) => new Date(start) < now && now < new Date(end)
+            ([, {end, start}]) => new Date(start) < now && now < new Date(end)
         );
 
         // Find latest lts version
@@ -26,7 +26,7 @@
         const matrix = {"include": []};
 
         // Push entries to matrix
-        for (const [key, _] of data) {
+        for (const [key,] of data) {
             const node_version = key.replace(/^v/, '');
             let extra_tags = '';
             if (key === ltsVersion) {
