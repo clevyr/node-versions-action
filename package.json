@@ -19,11 +19,11 @@
   },
   "homepage": "https://github.com/clevyr/node-versions-action#readme",
   "dependencies": {
-    "@actions/core": "^1.2.6",
-    "axios": "^0.21.2"
+    "@actions/core": "1.2.6",
+    "axios": "0.21.2"
   },
   "devDependencies": {
-    "@vercel/ncc": "^0.36.1",
-    "eslint": "^7.16.0"
+    "@vercel/ncc": "0.36.1",
+    "eslint": "7.16.0"
   }
 }
