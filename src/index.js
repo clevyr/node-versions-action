@@ -1,13 +1,12 @@
 (async () => {
     const core = require('@actions/core');
-    const axios = require('axios');
 
     try {
         const now = new Date();
 
         // Download schedule json
         const nodeScheduleUrl = 'https://raw.githubusercontent.com/nodejs/Release/master/schedule.json';
-        let {data} = await axios.get(nodeScheduleUrl);
+        let {data} = await fetch(nodeScheduleUrl);
 
         // Filter out old or unreleased versions
         data = Object.entries(data).filter(
