@@ -19,7 +19,8 @@
   },
   "homepage": "https://github.com/clevyr/node-versions-action#readme",
   "dependencies": {
-    "@actions/core": "1.10.0"
+    "@actions/core": "1.10.0",
+    "axios": "0.21.2"
   },
   "devDependencies": {
     "@vercel/ncc": "0.36.1",
