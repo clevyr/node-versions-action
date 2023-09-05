@@ -1,0 +1,48 @@
+name: Renovate
+
+on:
+  push:
+    branches:
+      - renovate/**
+
+env:
+  COMMIT_MESSAGE: "chore(dist): Build action"
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: .nvmrc
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Check if commit exists
+        id: commit_exists
+        env:
+          BASE_REF: ${{ steps.pr.outputs.base_ref }}
+        run: |
+          set -eu
+          IFS=$'\n\t'
+          commits="$(git rev-list --pretty=oneline "origin/$BASE_REF..HEAD" | cut -d' ' -f2-)"
+          if grep -F -e "$COMMIT_MESSAGE" <<<"$commits"; then
+            echo 'result=true' >>$GITHUB_OUTPUT
+          else
+            echo 'result=false' >>$GITHUB_OUTPUT
+          fi
+
+      - name: Commit chart version
+        uses: stefanzweifel/git-auto-commit-action@v4
+        if: steps.commit_exists.outputs.result == 'false'
+        with:
+          commit_message: ${{ env.COMMIT_MESSAGE }}
