@@ -2,5 +2,16 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "local>clevyr/renovate-config"
+  ],
+  "regexManagers": [
+    {
+      "fileMatch": ["^action.yml$"],
+      "matchStrings": [
+        "\\s+using: ['\"]?node(?<currentValue>\\d+)['\"]?"
+      ],
+      "depNameTemplate": "node",
+      "datasourceTemplate": "node",
+      "versioningTemplate": "node"
+    }
   ]
 }
