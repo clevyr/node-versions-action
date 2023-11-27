@@ -3,6 +3,7 @@
   "extends": [
     "local>clevyr/renovate-config-public"
   ],
+  "gitIgnoredAuthors": ["renovate[bot]@users.noreply.github.com"],
   "regexManagers": [
     {
       "fileMatch": ["^action.yml$"],
