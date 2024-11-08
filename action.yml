@@ -8,5 +8,5 @@ outputs:
   matrix:
     description: Matrix JSON to be used in another job.
 runs:
-  using: 'node20'
+  using: 'node22'
   main: 'dist/index.js'
